@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cf4999a1844043779c6608732c6e75b2" Name="Diagram1">
+        <EntityTypeShape EntityType="GolloVentasModel.Abono" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolloVentasModel.Articulo" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolloVentasModel.Categoria" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolloVentasModel.EstadoCompra" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolloVentasModel.Factura" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolloVentasModel.Orden" Width="1.5" PointX="7.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolloVentasModel.PlazoCompra" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolloVentasModel.Rol" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolloVentasModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GolloVentasModel.Usuario" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="GolloVentasModel.FK_Abono_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="GolloVentasModel.FK_Articulo_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="GolloVentasModel.FK_Orden_Articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="GolloVentasModel.FK_Factura_EstadoCompra" ManuallyRouted="false" />
+        <AssociationConnector Association="GolloVentasModel.FK_Factura_PlazoCompra" ManuallyRouted="false" />
+        <AssociationConnector Association="GolloVentasModel.FK_Factura_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="GolloVentasModel.FK_Orden_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="GolloVentasModel.FK_Usuario_Rol" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
