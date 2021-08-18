@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -16,10 +18,48 @@ namespace GolloAPI.Controllers
     {
         private GolloVentasEntities db = new GolloVentasEntities();
 
-        // GET: api/Facturas
-        public IQueryable<Factura> GetFactura()
+        [HttpGet]
+        public IHttpActionResult GetAll()
         {
-            return db.Factura;
+            List<Factura> facturas = new List<Factura>();
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["GolloBD"].ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT facturaId,estadoId ,plazoId ,garantiaMeses,pagoPorMes ,Saldo,cedula,fecha FROM Factura", sqlConnection);
+
+                    sqlConnection.Open();
+
+                    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                    while (sqlDataReader.Read())
+                    {
+                        Factura factura = new Factura();
+                        factura.facturaId = sqlDataReader.GetInt32(0);
+                        factura.estadoId = sqlDataReader.GetInt32(1);
+                        factura.plazoId = sqlDataReader.GetInt32(2);
+                        factura.garantiaMeses = sqlDataReader.GetInt32(3);
+                        factura.pagoPorMes = sqlDataReader.GetDecimal(4);
+                        factura.saldo = sqlDataReader.GetDecimal(5);
+                        factura.cedula = sqlDataReader.GetString(6);
+                        factura.fecha = sqlDataReader.GetDateTime(7);
+
+
+
+                        facturas.Add(factura);
+                    }
+
+                    sqlConnection.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+
+            }
+
+            return Ok(facturas);
         }
 
         // GET: api/Facturas/5
